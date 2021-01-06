@@ -17,8 +17,8 @@ def getKerasModel(u_limit,m_limit,u_output,m_output,hdfs_path):
     latent = tf.keras.layers.concatenate([u_flatten, m_flatten])
 
     numEmbeddingOutput = u_output + m_output
-    linear1 = tf.keras.layers.Dense(numEmbeddingOutput // 2)(latent)
-    output = tf.keras.layers.Dense(2)(linear1)
+    linear1 = tf.keras.layers.Dense(numEmbeddingOutput // 2, activation="relu")(latent)
+    output = tf.keras.layers.Dense(2, activation="softmax")(linear1)
     model = tf.keras.models.Model(inputs=input, outputs=output)
     model.compile(optimizer='rmsprop',
                       loss='sparse_categorical_crossentropy',
