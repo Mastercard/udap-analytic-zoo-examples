@@ -169,8 +169,8 @@ RUN ldconfig
 
 MAINTAINER Mastercard udap team
 WORKDIR /opt/work
-ARG ANALYTICS_ZOO_VERSION=0.9.0-SNAPSHOT
-ARG BIGDL_VERSION=0.11.1
+ARG ANALYTICS_ZOO_VERSION=0.10.0-SNAPSHOT
+ARG BIGDL_VERSION=0.12.1
 ARG SPARK_VERSION=2.4.3
 ARG RUNTIME_SPARK_MASTER=local[*]
 ARG RUNTIME_DRIVER_CORES=1
@@ -240,11 +240,11 @@ RUN yum -y install \
 CMD [ "/usr/lib/systemd/systemd" ]
 
 #java
-RUN wget http://enos.itcollege.ee/~jpoial/allalaadimised/jdk8/jdk-8u261-linux-x64.tar.gz && \
-    gunzip jdk-8u261-linux-x64.tar.gz && \
-    tar -xf jdk-8u261-linux-x64.tar -C /opt && \
-    rm jdk-8u261-linux-x64.tar && \
-    ln -s /opt/jdk1.8.0_261 /opt/jdk
+RUN wget http://enos.itcollege.ee/~jpoial/allalaadimised/jdk8/jdk-8u271-linux-x64.tar.gz && \
+    gunzip jdk-8u271-linux-x64.tar.gz && \
+    tar -xf jdk-8u271-linux-x64.tar -C /opt && \
+    rm jdk-8u271-linux-x64.tar && \
+    ln -s /opt/jdk1.8.0_271 /opt/jdk
 
 ARG MAVEN_VERSION=3.5.4
 # Maven
@@ -262,7 +262,9 @@ ENV PATH $M2:$PATH
 #python libs
 COPY conf/requirements.txt requirements.txt
 RUN pip install --upgrade setuptools wheel && \
-    pip install -r requirements.txt
+    pip install -r requirements.txt && \
+    pip install spylon-kernel && \
+    python -m spylon_kernel install
 
 
 #spark
@@ -288,13 +290,18 @@ ADD scripts/*.* /opt/work/scripts/
 RUN chmod a+x /opt/work/scripts/*.*
 
 # Adding ncf 
-RUN mkdir -p /opt/work/ncf
-ADD ncf/*.* /opt/work/ncf/
-RUN chmod a+x /opt/work/ncf/*.*
+RUN mkdir -p /opt/work/examples
+RUN mkdir -p /opt/work/examples/ncf
+ADD ncf/*.* /opt/work/examples/ncf/
+RUN chmod a+x /opt/work/examples/ncf/*.*
 RUN mkdir -p /opt/work/model
+RUN mkdir -p /opt/work/model/ncf
 RUN mkdir -p /opt/work/logs
+RUN mkdir -p /opt/work/logs/ncf
 RUN mkdir -p /opt/work/output
+RUN mkdir -p /opt/work/output/ncf
 RUN mkdir -p /opt/work/metrics
+RUN mkdir -p /opt/work/metrics/ncf
 	
 # Download zoo 
 RUN /opt/work/scripts/download-analytics-zoo.sh

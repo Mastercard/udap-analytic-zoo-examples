@@ -23,11 +23,11 @@ A demo project elaborate how to use intel analytic zoo to train and inference a 
 
 ### Move to /opt/work/ncf folder and execute ./run_ncf.sh
 
-    cd /opt/work/ncf 
+    cd /opt/work/examples/ncf 
     ./run_ncf.sh
 
 ### Start notebook 
-    cd /opt/work/ncf 
+    cd /opt/work/examples/ncf 
     unzip jobs.zip 
     cd /opt/work/scripts 
     ./start-notebook.sh 
