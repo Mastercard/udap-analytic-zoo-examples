@@ -14,7 +14,6 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import concat, col, udf, lit
 from pyspark.sql.types import FloatType,DoubleType,ArrayType
 from zoo.orca.learn.tf.estimator import Estimator
-from zoo.orca.learn.tf.utils import convert_predict_to_dataframe
 from pyspark.sql.functions import udf
 from pyspark.sql.types import FloatType
 
@@ -90,7 +89,7 @@ if __name__ == '__main__':
 
     model = ncf_model.getKerasModel(u_limit,m_limit,u_output,m_output,args.log_dir)
     est = Estimator.from_keras(model,model_dir=args.log_dir)
-    est.fit(data=trainingDF,batch_size=batch_size,epochs=max_epoch,feature_cols=['features'],labels_cols=['labels'],validation_data=validationDF)
+    est.fit(data=trainingDF,batch_size=batch_size,epochs=max_epoch,feature_cols=['features'],label_cols=['labels'],validation_data=validationDF)
     # save the model
     est.save_keras_model(save_model_dir)
     # metrics ,result and save model

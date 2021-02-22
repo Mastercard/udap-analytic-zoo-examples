@@ -18,7 +18,7 @@ def getKerasModel(u_limit,m_limit,u_output,m_output,hdfs_path):
 
     numEmbeddingOutput = u_output + m_output
     linear1 = tf.keras.layers.Dense(numEmbeddingOutput // 2, activation="relu")(latent)
-    output = tf.keras.layers.Dense(2, activation="softmax")(linear1)
+    output = tf.keras.layers.Dense(2, activation="sigmoid")(linear1)
     model = tf.keras.models.Model(inputs=input, outputs=output)
     model.compile(optimizer='rmsprop',
                       loss='sparse_categorical_crossentropy',
