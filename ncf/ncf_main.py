@@ -95,7 +95,9 @@ if __name__ == '__main__':
     # metrics ,result and save model
     print(model.metrics_names)
     #Orca the predict function supports native spark data frame ! Just need to tell batch_size and feature_cols
-    prediction_df = est.predict(inferenceDF, batch_size=batch_size, feature_cols=['features'])
+    # use a new Estimamtor to validate load model API
+    pre_est = Estimator.load_keras_model(save_model_dir)
+    prediction_df = pre_est.predict(inferenceDF, batch_size=batch_size, feature_cols=['features'])
     prediction_df.show(5)
     score_udf = udf(lambda pred: 0.0 if pred[0] > pred[1] else 1.0, FloatType())
     prediction_df = prediction_df.withColumn('prediction2', score_udf('prediction'))

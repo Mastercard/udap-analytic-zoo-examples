@@ -1,3 +1,4 @@
+h5py==2.10.0 #save model issue
 optbinning==0.8.0 #xinsong
 cx-Oracle==8.0.1  #merch
 ray==1.0.0                # ray on spark
