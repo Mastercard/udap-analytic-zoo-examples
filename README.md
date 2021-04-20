@@ -1,4 +1,4 @@
-# ncf_analytic_zoo
+# udap_ncf_analytic_zoo_examples
 A demo project elaborate how to use intel analytic zoo to train and inference a NCF deep learning model 
 ## How to build it.
 

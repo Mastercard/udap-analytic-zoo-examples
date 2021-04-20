@@ -171,7 +171,7 @@ MAINTAINER Mastercard udap team
 WORKDIR /opt/work
 ARG ANALYTICS_ZOO_VERSION=0.10.0-SNAPSHOT
 ARG BIGDL_VERSION=0.12.1
-ARG SPARK_VERSION=2.4.3
+ARG SPARK_VERSION=3.0.0
 ARG RUNTIME_SPARK_MASTER=local[*]
 ARG RUNTIME_DRIVER_CORES=1
 ARG RUNTIME_DRIVER_MEMORY=2g
@@ -270,10 +270,10 @@ RUN pip install --upgrade setuptools wheel && \
 #spark
 ENV SPARK_CONF_DIR=$SPARK_HOME/conf
 ENV PATH $PATH:$SPARK_HOME/bin
-RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz && \
-    tar -zxvf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz && \
-    mv spark-${SPARK_VERSION}-bin-hadoop2.7 spark-${SPARK_VERSION} && \
-    rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz
+RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.2.tgz && \
+    tar -zxvf spark-${SPARK_VERSION}-bin-hadoop3.2.tgz && \
+    mv spark-${SPARK_VERSION}-bin-hadoop3.2 spark-${SPARK_VERSION} && \
+    rm spark-${SPARK_VERSION}-bin-hadoop3.2.tgz
 
 ADD conf/spark-env.sh ${SPARK_HOME}/conf/
 ADD conf/spark-defaults.conf ${SPARK_HOME}/conf/
