@@ -240,11 +240,11 @@ RUN yum -y install \
 CMD [ "/usr/lib/systemd/systemd" ]
 
 #java
-RUN wget http://enos.itcollege.ee/~jpoial/allalaadimised/jdk8/jdk-8u281-linux-x64.tar.gz && \
-    gunzip jdk-8u281-linux-x64.tar.gz && \
-    tar -xf jdk-8u281-linux-x64.tar -C /opt && \
-    rm jdk-8u281-linux-x64.tar && \
-    ln -s /opt/jdk1.8.0_281 /opt/jdk
+RUN wget http://enos.itcollege.ee/~jpoial/allalaadimised/jdk8/jdk-8u291-linux-x64.tar.gz && \
+    gunzip jdk-8u291-linux-x64.tar.gz && \
+    tar -xf jdk-8u291-linux-x64.tar -C /opt && \
+    rm jdk-8u291-linux-x64.tar && \
+    ln -s /opt/jdk1.8.0_291 /opt/jdk
 
 ARG MAVEN_VERSION=3.5.4
 # Maven
