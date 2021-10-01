@@ -81,7 +81,7 @@ if __name__ == '__main__':
     # model = ncf_model.getKerasModel(u_limit,m_limit,u_output,m_output,args.log_dir)
     def get_model(config):
         return ncf_model.getKerasModel(u_limit,m_limit,u_output,m_output,args.log_dir)
-    est = Estimator.from_keras(model_creator=get_model, model_dir=args.log_dir)
+    est = Estimator.from_keras(model_creator=get_model)
     steps = math.ceil(trainingDF.count() / batch_size)
     valid_steps = math.ceil(validationDF.count() / batch_size)
     est.fit(data=trainingDF,
