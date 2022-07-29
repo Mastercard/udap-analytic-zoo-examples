@@ -26,7 +26,7 @@ jupyter==1.0.0
 kiwisolver==1.1.0         # via matplotlib
 markupsafe==1.1.1         # via jinja2
 matplotlib==3.1.2         # via seaborn
-mistune==0.8.4            # via nbconvert
+mistune==2.0.3            # via nbconvert
 more-itertools==8.0.2     # via zipp
 nbconvert==5.6.1          # via jupyter, notebook
 nbformat==4.4.0           # via ipywidgets, nbconvert, notebook
