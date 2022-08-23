@@ -28,7 +28,7 @@ markupsafe==1.1.1         # via jinja2
 matplotlib==3.1.2         # via seaborn
 mistune==0.8.4            # via nbconvert
 more-itertools==8.0.2     # via zipp
-nbconvert==5.6.1          # via jupyter, notebook
+nbconvert==6.5.1          # via jupyter, notebook
 nbformat==4.4.0           # via ipywidgets, nbconvert, notebook
 notebook==6.0.2           # via jupyter, widgetsnbextension
 numpy==1.18.0
