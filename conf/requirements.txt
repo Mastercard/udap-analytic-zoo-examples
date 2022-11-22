@@ -38,7 +38,7 @@ pandas==0.25.3
 pandocfilters==1.4.2      # via nbconvert
 parso==0.5.2              # via jedi
 pickleshare==0.7.5        # via ipython
-pillow==6.2.1             # via bokeh
+pillow==9.3.0             # via bokeh
 prometheus-client==0.7.1  # via notebook
 prompt-toolkit==2.0.10    # via ipython, jupyter-console
 py4j==0.10.7              # via pyspark
